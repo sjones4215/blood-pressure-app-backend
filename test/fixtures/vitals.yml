@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  systolic: 
+  diastolic: 
+  hr: 
+  oxygen: 
+  weight: 
+  temp: 1
+
+two:
+  user: two
+  systolic: 
+  diastolic: 
+  hr: 
+  oxygen: 
+  weight: 
+  temp: 1
