@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     get :me
     end
   
-  namespace :vitals, defaults:{ fromat: :json } do 
+  namespace :vitals, defaults:{ format: :json } do 
     get :index
     get :show
     post :create

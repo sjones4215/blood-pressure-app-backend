@@ -1,22 +1,24 @@
 class VitalsController < ApplicationController
   before_action :set_vital, only: [:show, :update, :destroy]
-  skip_before_action :authenticate, only: [:index, :show, :destroy]
+
 
   # GET /vitals
   def index
-    @vitals = Vital.all
+    @vitals = Vital.where(user_id: @current_user.id)
 
     render json: { vitals: @vitals }
   end
 
   # GET /vitals/1
   def show
-    render json: @vital
+    render json: @vital 
   end
 
   # POST /vitals
   def create
     @vital = Vital.new(vital_params)
+    
+    @vital.user_id = @current_user.id
 
     if @vital.save
       render json: @vital, status: :created
@@ -47,6 +49,6 @@ class VitalsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def vital_params
-      params.require(:vital).permit(:user_id, :systolic, :diastolic, :hr, :oxygen, :weight, :temp)
+      params.require(:vital).permit(:user_id, :systolic, :diastolic, :hr, :oxygen, :weight, :temp, :past_date)
     end
 end
